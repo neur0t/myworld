@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.template import loader
 from .models import Member
+from django.shortcuts import render
 
 # Create your views here.
 def members(request):
@@ -19,3 +20,10 @@ def details(request, id):
     'mymember': mymember,
   }
   return HttpResponse(template.render(context, request))
+
+def testing(request):
+   template = loader.get_template('template.html')
+   context = {
+      'fruits': ['Apple', 'Banana', 'Cherry']
+   }
+   return HttpResponse(template.render(context, request))
